@@ -27,14 +27,22 @@
 
       }
 
-      $output = $output . "
+      $output .=  "
           <form action='/tasks' method='post'>
-            <label for='description'>Task Description</label>
-            <input id='description' name='description' type='text'>
+              <label for='description'>Task Description</label>
+              <input id='description' name='description' type='text'>
 
-            <button type='submit'>Add task</button>
+              <button type='submit'>Add task</button>
           </form>
       ";
+
+      $output .= "
+          <form action='/delete_tasks' method='post'>
+              <button type='submit'>delete</button>
+
+          </form>
+      ";
+
     return $output;
 
   });
