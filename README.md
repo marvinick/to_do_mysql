@@ -1,22 +1,23 @@
-Job board Exercise
-Job board using Silex
+#To Do Exercise
+#####To Do using Silex
 
-By Jason Bethel and Annie Hoogendoorn
+####By Jason Bethel and Annie Hoogendoorn
 
-Description
+##Description
 
 To Do exercise using silex.
 
-Setup
+##Setup
 
 Clone repository from GitHub.
 Run $ composer install.
 Enjoy.
-Technologies Used
+
+##Technologies Used
 
 PHP, html, css, silex
 
-Legal
+###Legal
 
 Copyright (c) 2015 {List of contribtors}
 
