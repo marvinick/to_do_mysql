@@ -3,6 +3,7 @@
     require_once __DIR__."/../src/Task.php";
 
     session_start();
+
     if (empty($_SESSION['list_of_tasks'])) {
         $_SESSION['list_of_tasks'] = array();
     }
@@ -43,9 +44,10 @@
           </form>
       ";
 
+
     return $output;
 
-  });
+    });
 
     $app->post("/tasks", function() {
           $task = new Task($_POST['description']);
@@ -54,6 +56,16 @@
               <h1>You created a task!</h1>
               <p>" . $task->getDescription() . "</p>
               <p><a href='/'>View your list of things to do.</a></p>
+              ";
+    });
+
+    $app->post("/delete_tasks", function() {
+
+          Task::deleteAll();
+
+          return "
+              <h1>List Cleared!</h1>
+              <p><a href='/'>Home</a></p>
               ";
     });
 
