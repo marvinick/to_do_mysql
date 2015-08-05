@@ -17,5 +17,10 @@
         {
             return $this->description;
         }
+
+        function save()
+        {
+            array_push($SESSION['List_of_tasks'], $this);
+        }
     }
 ?>
