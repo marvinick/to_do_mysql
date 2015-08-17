@@ -32,11 +32,7 @@
             $GLOBALS['DB']->exec("INSERT INTO categories (name) VALUES ('{$this->getName()}')");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
-        // function save()
-        // {
-        //     $GLOBALS['DB']->exec("INSERT INTO categories (name) VALUES ('{$this->getName()}')");
-        //     $this->id= $GLOBALS['DB']->lastInsertId();
-        // }
+
 
         static function getAll()
         {
