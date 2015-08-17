@@ -26,12 +26,21 @@
 
         static function getAll()
         {
-            return $_SESSION['list_of_tasks'];
+            $returned_tasks = $GLOBALS['DB']->query("SELECT * FROM tasks;");
+            //echo "var_dump in getAll";
+            //var_dump($returned_tasks);
+            $tasks = array();
+            foreach($returned_tasks as $task) {
+                $description = $task['description'];
+                $new_task = new Task($description);
+                array_push($tasks, $new_task);
+            }
+            return $tasks;
         }
 
         static function deleteAll()
         {
-            $_SESSION['list_of_tasks'] = array();
+            $GLOBALS['DB']->exec("DELETE FROM tasks;");
         }
     }
 ?>
