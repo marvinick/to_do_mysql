@@ -9,13 +9,26 @@ To Do exercise using silex and mysql
 
 ##Setup
 
-Clone repository from GitHub.
-Run $ composer install.
-Enjoy.
+1. Clone repository from GitHub.
+
+2. Run $ composer install in top level of project folder.
+
+3. in a new terminal tab. enter ```mysql.server start```.
+
+4. Then enter ```mysql -uroot -proot``` (you now have MySql running)
+
+5. Start an apache server (another new tab in terminal) with ```apachectl start```
+
+6. Open your browser to ```localhost:8888/phpmyadmin```
+
+7. Start another terminal tab. Open a php server ```php -S localhost:8000```. This is so you can view your twig sites.
+
+8. Enjoy
+
 
 ##Technologies Used
 
-PHP, html, css, silex
+PHP, html, css, silex, MySQL, phpMyadmin
 
 ###Legal
 
