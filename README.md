@@ -1,11 +1,11 @@
 #To Do Exercise
 #####To Do using Silex
 
-####By Jason Bethel and Annie Hoogendoorn
+####By Jason Bethel and Mike Chastain
 
 ##Description
 
-To Do exercise using silex.
+To Do exercise using silex and mysql
 
 ##Setup
 
