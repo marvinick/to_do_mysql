@@ -89,7 +89,7 @@
 
          function test_find()
          {
-             //arrange
+             //Arrange
                 $description = "Wash the dog";
                 $description2 = "Water the lawn";
                 $test_Task = new Task($description);
