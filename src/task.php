@@ -3,10 +3,12 @@
     class Task
     {
         private $description;
+        private $id;
 
         function __construct($description)
         {
             $this->description = $description;
+            $this->id = $id;
         }
 
         function setDescription($new_description)
@@ -41,6 +43,11 @@
         static function deleteAll()
         {
             $GLOBALS['DB']->exec("DELETE FROM tasks;");
+        }
+
+        function getId()
+        {
+            return $this->id;
         }
     }
 ?>

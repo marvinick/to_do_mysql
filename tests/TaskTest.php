@@ -73,6 +73,20 @@
               $this->assertEquals([], $result);
           }//end function
 
+          function test_getId()
+          {
+              //Arrange
+              $description = "Wash the dog";
+              $id = 1;
+              $test_Task = new Task($description, $id);
+
+              //Act
+              $result = $test_Task->getId();
+
+              //Assert
+              $this->assertEquals(1, $result);
+          }
+
 
     }// end class
 ?>
