@@ -18,28 +18,29 @@
           protected function tearDown()
           {
                 Task::deleteAll();
+                Category::deleteAll();
 
           }
 
           function test_save()
-          {
-              //Arrange
-              $name = "Home stuff";
-              $id = null;
-              $test_category = new Category($name, $id);
-              $test_category->save();
+        {
+            //Arrange
+            $name = "Home stuff";
+            $id = null;
+            $test_category = new Category($name, $id);
+            $test_category->save();
 
-              $description = "Wash the dog";
-              $category_id = $test_category->getId();
-              $test_Task = new Task($description, $id, $category_id);
+            $description = "Wash the dog";
+            $category_id = $test_category->getId();
+            $test_task = new Task($description, $id, $category_id);
 
-              //Act
-              $test_Task->save();
+            //Act
+            $test_task->save();
 
-              //Assert
-              $result = Task::getAll();
-              $this->assertEquals($test_Task, $result[0]);
-          }//end function
+            //Assert
+            $result = Task::getAll();
+            $this->assertEquals($test_task, $result[0]);
+        }
 
 
           function test_getAll()
