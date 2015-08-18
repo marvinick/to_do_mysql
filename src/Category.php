@@ -75,7 +75,8 @@
                 $description = $task['description'];
                 $id = $task['id'];
                 $category_id = $task['category_id'];
-                $new_task = new Task($description, $id, $category_id);
+                $due_date = $task['due_date'];
+                $new_task = new Task($description, $id, $category_id, $due_date);
                 array_push($tasks, $new_task);
 
             }
