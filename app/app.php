@@ -8,6 +8,8 @@
 
     $app = new Silex\Application();
 
+    $app['debug'] = true;
+
     $server = 'mysql:host=localhost;dbname=to_do';
     $username = 'root';
     $password = 'root';
@@ -40,11 +42,12 @@
     $app->post("/tasks", function() use ($app) {
         $description = $_POST['description'];
         $category_id = $_POST['category_id'];
-
-        $task = new Task($description, $id = null, $category_id);
+        $due_date = $_POST['due_date'];
+        var_dump($due_date);
+        $task = new Task($description, $id = null, $category_id, $due_date);
         $task->save();
         $category = Category::find($category_id);
-        return $app ['twig']->render('category.html.twig', array('category' => $category, 'tasks' => Task::getAll()));
+        return $app ['twig']->render('category.html.twig', array('category' => Category::getAll(), 'tasks' => Task::getAll()));
 
     });
 
@@ -57,12 +60,12 @@
     $app->post("/categories", function() use ($app) {
         $category = new Category($_POST['name']);
         $category->save();
-        return $app['twig']->render('index.html.twig', array('categories' => Category::getAll()));
+        return $app['twig']->render('index.html.twig', array('categories' => Category::getAll(), 'tasks' => Task::getAll()));
     });
 
     $app->post("/delete_categories", function() use ($app) {
         Category::deleteAll();
-        return $app['twig']->render('index.html.twig');
+        return $app['twig']->render('index.html.twig',array('categories' => Category::getAll(), 'tasks' => Task::getAll()));
     });
 
     $app->get("/categories/{id}", function($id) use ($app) {

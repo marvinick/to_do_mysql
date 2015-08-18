@@ -1,18 +1,23 @@
 <html>
 <head>
     <title>To Do List</title>
+
 </head>
 <body>
+    {% if category is defined %}
     <h1>{{ category.getName }}</h1>
-
+    {% endif %}
+{% if tasks is defined %}
     {% if tasks is not empty %}
         <p>Here are the tasks:</p>
         <ul>
             {% for task in tasks %}
                 <li>{{ task.getDescription }}</li>
+                <li>{{ task.getDueDate }}</li>
             {% endfor %}
         </ul>
     {% endif %}
+{% endif %}
 
     <h4>Add a task</h4>
 
@@ -20,6 +25,8 @@
         <input id="category_id" name="category_id" type="hidden" value="{{ category.getId() }}">
         <label for='description'>Task Description</label>
         <input id='description' name='description' type='text'>
+        <label for='due_date'>Task Due Date</label>
+        <input id='due_date' name='due_date' type='date'>
 
         <button type='submit'>Add task</button>
     </form>
@@ -28,5 +35,6 @@
     <form action='/delete_tasks' method='post'>
         <button type='submit'>Clear All Tasks</button>
     </form>
+
 </body>
 </html>

@@ -20,7 +20,7 @@
            {% for category in categories %}
                <li><a href="/categories/{{ category.getId }}">{{ category.getName }}</a></li>
            {% endfor %}
-       </ul>
+       </ul>    
     {% else %}
      <p>There are no categories yet!</p>
     {% endif %}
@@ -28,6 +28,6 @@
     <form action='/delete_categories' method='post'>
         <button type='submit'>Clear All Categories</button>
     </form>
-    
+
 
 </html>

@@ -53,7 +53,7 @@
 
         static function getAll()
         {
-            $returned_tasks = $GLOBALS['DB']->query("SELECT * FROM tasks;");
+            $returned_tasks = $GLOBALS['DB']->query("SELECT * FROM tasks ORDER BY due_date;");
             //echo "var_dump in getAll";
             //var_dump($returned_tasks);
             $tasks = array();
@@ -61,7 +61,7 @@
                 $description = $task['description'];
                 $id = $task['id'];
                 $category_id = $task['category_id'];
-                $due_date = date($task['due_date']);
+                $due_date = $task['due_date'];
                 $new_task = new Task($description, $id, $category_id, $due_date);
                 array_push($tasks, $new_task);
             }
