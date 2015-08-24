@@ -10,7 +10,7 @@
             <p>Here are all your categories:</p>
             <ul>
                 {% for category in categories %}
-                    <li>{{ category.getName }}</li>
+                <li><a href="/categories/{{ category.getId }}">{{ category.getName }}</a></li>
                 {% endfor %}
             </ul>
         {% endif %}

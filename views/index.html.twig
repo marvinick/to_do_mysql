@@ -4,33 +4,11 @@
     <title>To Do List</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to To Do List</h1>
+  <body>
+  <h1>Welcome to To Do List</h1>
 
-        <p>Create a new category:</p>
+  <h3><a href="/categories">Add or view a category</a></h3>
+  <h3><a href="/tasks">Add or view a task</a></h3>
 
-        <form action="/categories" method="post">
-            <label for="name">Category name:</label>
-            <input id="name" name="name" type="text">
-
-            <button class="btn-default" type="submit">Add category</button>
-        </form>
-
-        {% if categories is not empty %}
-            <p>Here are all your categories:</p>
-            <ul>
-                {% for category in categories %}
-                    <li><a href="/categories/{{ category.getId }}">{{ category.getName }}</a></li>
-                {% endfor %}
-            </ul>
-            {% else %}
-                <p>There are no categories yet!</p>
-        {% endif %}
-        <br/>
-        <form action="/delete_categories" method="post">
-            <button class="btn-danger" type="submit">Clear</button>
-        </form>
-
-    </div>
 </body>
 </html>
