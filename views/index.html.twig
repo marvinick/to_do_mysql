@@ -1,0 +1,36 @@
+<html>
+<head>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+    <title>To Do List</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to To Do List</h1>
+
+        <p>Create a new category:</p>
+
+        <form action="/categories" method="post">
+            <label for="name">Category name:</label>
+            <input id="name" name="name" type="text">
+
+            <button class="btn-default" type="submit">Add category</button>
+        </form>
+
+        {% if categories is not empty %}
+            <p>Here are all your categories:</p>
+            <ul>
+                {% for category in categories %}
+                    <li><a href="/categories/{{ category.getId }}">{{ category.getName }}</a></li>
+                {% endfor %}
+            </ul>
+            {% else %}
+                <p>There are no categories yet!</p>
+        {% endif %}
+        <br/>
+        <form action="/delete_categories" method="post">
+            <button class="btn-danger" type="submit">Clear</button>
+        </form>
+
+    </div>
+</body>
+</html>
