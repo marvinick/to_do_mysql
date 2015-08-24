@@ -67,7 +67,7 @@
 
             function update($new_description)
             {
-                $GLOBALS['DB']->exec("UPDATE tasks SET description = '{$new_description} WHERE id= {$this->getId()};");
+                $GLOBALS['DB']->exec("UPDATE tasks SET description = '{$new_description}' WHERE id= {$this->getId()};");
                 $this->setDescription($new_description);
             }
 
