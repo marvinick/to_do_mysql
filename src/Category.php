@@ -38,10 +38,6 @@
             $this->setName($new_name);
         }
 
-        function delete()
-        {
-            $GLOBALS['DB']->exec("DELETE FROM categories WHERE id = {$this->getId()};");
-        }
 
         static function getAll()
         {
@@ -82,7 +78,7 @@
 
         function getTasks()
         {
-          $query = $GLOBALS['DB']->query("SELECT task_id FROM categories_tasks WHERE            category_id = {$this->getId()};");
+          $query = $GLOBALS['DB']->query("SELECT task_id FROM categories_tasks WHERE category_id = {$this->getId()};");
           $task_ids = $query->fetchAll(PDO::FETCH_ASSOC);
 
           $tasks = array();
@@ -99,5 +95,11 @@
         }
         return $tasks;
       }
-    }
+
+        function delete()
+        {
+          $GLOBALS['DB']->exec("DELETE FROM categories WHERE id = {$this->getId()};");
+          $GLOBALS['DB']->exec("DELETE FROM categories_tasks WHERE category_id = {$this->getId()};");
+        }
+   }
 ?>

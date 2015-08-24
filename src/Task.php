@@ -11,6 +11,8 @@
                 $this->id = $id;
             }
 
+
+
             function setDescription($new_description)
             {
                 $this->description = (string) $new_description;
@@ -28,7 +30,7 @@
 
             function save()
             {
-                $statement = $GLOBALS['DB']->exec("INSERT INTO tasks (description)
+                $GLOBALS['DB']->exec("INSERT INTO tasks (description)
                     VALUES ('{$this->getDescription()}');");
                 $this->id = $GLOBALS['DB']->lastInsertId();
             }
@@ -71,10 +73,36 @@
                 $this->setDescription($new_description);
             }
 
-            function delete()
-                {
-                    $GLOBALS['DB']->exec("DELETE FROM tasks WHERE id = {$this->getId()};");
-                }
-        }
+
+            function addCategory($category)
+            {
+              $GLOBALS['DB']->exec("INSERT INTO categories_tasks (category_id, task_id) VALUES ({$category->getId()}, {$this->getId()});");
+            }
+
+            function getCategories()
+            {
+              $query = $GLOBALS['DB']->query("SELECT category_id FROM categories_tasks WHERE task_id = {$this->getId()};");
+              $category_ids = $query->fetchAll(PDO::FETCH_ASSOC);
+
+              $categories = array();
+              foreach($category_ids as $id) {
+                  $category_id = $id['category_id'];
+                  $result = $GLOBALS['DB']->query("SELECT * FROM categories WHERE id = {$category_id};");
+                  $returned_category = $result->fetchAll(PDO::FETCH_ASSOC);
+
+                  $name = $returned_category[0]['name'];
+                  $id = $returned_category[0]['id'];
+                  $new_category = new Category($name, $id);
+                  array_push($categories, $new_category);
+              }
+              return $categories;
+          }
+
+              function delete()
+              {
+                $GLOBALS['DB']->exec("DELETE FROM tasks WHERE id = {$this->getId()};");
+                $GLOBALS['DB']->exec("DELETE FROM categories_tasks WHERE task_id = {$this->getId()};");
+              }
+      }
 
 ?>

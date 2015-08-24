@@ -223,5 +223,26 @@
             $this->assertEquals($test_category, $result);
         }
 
+        function testDelete()
+        {
+            //arrange
+            $name = "Work stuff";
+            $id = 1;
+            $test_category = new Category($name, $id);
+            $test_category->save();
+
+            $description = "File reports";
+            $id2 = 2;
+            $test_task = new Task($description, $id2);
+            $test_task->save();
+
+            //act
+            $test_category->addTask($test_task);
+            $test_category->delete();
+
+            //assert
+            $this->assertEquals([], $test_task->getCategories());
+        }
+
     }
 ?>
